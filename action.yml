@@ -1,0 +1,16 @@
+name:        'Get Changed Directories'
+description: 'Saves lists of changed directories as JSON for use by other actions.'
+author:      'Rodrigo Oliveira <rodrigo.dealer@gmail.com>'
+runs:
+  using: 'node12'
+  main:  'dist/index.js'
+inputs:
+  token:
+    description: GitHub Personal Access Token
+    required:    true
+outputs:
+  all:
+    description: JSON array of all changed files that weren't removed
+branding:
+  icon:  'search'
+  color: 'gray-dark'

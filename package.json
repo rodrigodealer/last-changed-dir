@@ -1,0 +1,20 @@
+{
+  "name": "gh-action-get-changed-dirs",
+  "version": "2.1.4",
+  "private": true,
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "ncc build index.js -o dist"
+  },
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "@actions/github": "^3.0.0"
+  },
+  "devDependencies": {
+    "@zeit/ncc": "0.22.3"
+  },
+  "description": "Saves lists of changed files in the `outputs` object and on the filesystem for use by other actions.",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
