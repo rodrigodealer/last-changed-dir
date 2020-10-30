@@ -7,11 +7,11 @@ const context = github.context;
 const repo    = context.payload.repository;
 const owner   = repo.owner;
 
-const FILES          = new Set();
+const DIRS          = new Set();
 
 const gh   = github.getOctokit(core.getInput('token'));
 
-const forbiddenFiles = JSON.parse(core.getInput('forbidden'));
+const forbiddenDirs = JSON.parse(core.getInput('forbidden'));
 const args = { owner: owner.name || owner.login, repo: repo.name };
 
 function debug(msg, obj = null) {
@@ -61,11 +61,11 @@ function info(msg, obj = null) {
 }
 
 async function outputResults() {
-	debug('FILES', Array.from(FILES.values()));
+	debug('DIRS', Array.from(DIRS.values()));
 
-	core.setOutput('all', toJSON(Array.from(FILES.values()), 0));
+	core.setOutput('all', toJSON(Array.from(DIRS.values()), 0));
 
-	fs.writeFileSync(`${process.env.HOME}/files.json`, toJSON(Array.from(FILES.values())), 'utf-8');
+	fs.writeFileSync(`${process.env.HOME}/dirs.json`, toJSON(Array.from(DIRS.values())), 'utf-8');
 }
 
 async function processCommitData(result) {
@@ -78,12 +78,12 @@ async function processCommitData(result) {
 
 	result.data.files.forEach(file => {
 		item = file.filename.match(/(.*)[\/\\]/)[1]||'';
-		if (forbiddenFiles !== undefined && Array.isArray(forbiddenFiles)) {
-			if (!forbiddenFiles.includes(item)) {
-				FILES.add(item);
+		if (forbiddenDirs !== undefined && Array.isArray(forbiddenDirs)) {
+			if (!forbiddenDirs.includes(item)) {
+				DIRS.add(item);
 			}
 		} else {
-			FILES.add(item);
+			DIRS.add(item);
 		}
 
 	});
