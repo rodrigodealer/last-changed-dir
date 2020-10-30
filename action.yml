@@ -8,6 +8,9 @@ inputs:
   token:
     description: GitHub Personal Access Token
     required:    true
+  forbidden:
+    description: Directory names to be filtered out
+    required:    true
 outputs:
   all:
     description: JSON array of all changed files that weren't removed
