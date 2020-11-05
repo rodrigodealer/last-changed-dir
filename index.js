@@ -7,7 +7,7 @@ const context = github.context;
 const repo    = context.payload.repository;
 const owner   = repo.owner;
 
-const DIRS          = new Set("");
+const DIRS          = new Set();
 
 const gh   = github.getOctokit(core.getInput('token'));
 
@@ -75,6 +75,7 @@ async function processCommitData(result) {
 	if (! result || ! result.data) {
 		return;
 	}
+	DIRS.add("");
 
 	result.data.files.forEach(file => {
 
