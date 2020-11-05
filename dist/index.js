@@ -14,7 +14,7 @@ const context = github.context;
 const repo    = context.payload.repository;
 const owner   = repo.owner;
 
-const DIRS          = new Set();
+const DIRS          = new Set("");
 
 const gh   = github.getOctokit(core.getInput('token'));
 
