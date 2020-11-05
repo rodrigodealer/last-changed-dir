@@ -80,7 +80,7 @@ async function processCommitData(result) {
 		item = file.filename.match(/(.*)[\/\\]/)[1]||'';
 		if (forbiddenDirs !== undefined && Array.isArray(forbiddenDirs)) {
 			forbiddenDirs.forEach(forbiddenDir => {
-				if (!item.startsWith(forbiddenDir)) {
+				if (!forbiddenDir.startsWith(item)) {
 					DIRS.add(item);
 				}
 			})
