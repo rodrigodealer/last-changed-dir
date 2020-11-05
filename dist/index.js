@@ -84,7 +84,7 @@ async function processCommitData(result) {
 	}
 
 	result.data.files.forEach(file => {
-		DIRS.add(item);
+		DIRS.add(file.filename);
 		// if (file.filename.match(/(.*)[\/\\]/) !== null) {
 		// 	item = file.filename.match(/(.*)[\/\\]/)[1]||'';
 		// 	if (forbiddenDirs !== undefined && Array.isArray(forbiddenDirs)) {
