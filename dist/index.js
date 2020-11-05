@@ -83,8 +83,10 @@ async function processCommitData(result) {
 		return;
 	}
 
-	result.data.files.filter(n => n != null || n != "null").forEach(file => {
-		DIRS.add(item);
+	result.data.files.forEach(file => {
+		if (item !== null) {
+			DIRS.add(item);
+		}
 		// if (file.filename.match(/(.*)[\/\\]/).length > 0) {
 		// 	item = file.filename.match(/(.*)[\/\\]/)[1]||'';
 		// 	if (forbiddenDirs !== undefined && Array.isArray(forbiddenDirs)) {
