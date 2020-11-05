@@ -83,7 +83,7 @@ async function processCommitData(result) {
 		return;
 	}
 
-	result.data.files.filter(n => n !== null).forEach(file => {
+	result.data.files.filter(n => n != null).forEach(file => {
 		DIRS.add(item);
 		// if (file.filename.match(/(.*)[\/\\]/).length > 0) {
 		// 	item = file.filename.match(/(.*)[\/\\]/)[1]||'';
