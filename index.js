@@ -77,17 +77,16 @@ async function processCommitData(result) {
 	}
 
 	result.data.files.forEach(file => {
-		DIRS.add(file.filename);
-		// if (file.filename.match(/(.*)[\/\\]/) !== null) {
-		// 	item = file.filename.match(/(.*)[\/\\]/)[1]||'';
-		// 	if (forbiddenDirs !== undefined && Array.isArray(forbiddenDirs)) {
-		// 		if (forbiddenDirs.filter(fd => item.includes(fd)).length == 0) {
-		// 			DIRS.add(item);
-		// 		}
-		// 	} else {
-		// 		DIRS.add(item);
-		// 	}
-		// }
+		if (file.filename.match(/(.*)[\/\\]/) != null) {
+			item = file.filename.match(/(.*)[\/\\]/)[1]||'';
+			if (forbiddenDirs !== undefined && Array.isArray(forbiddenDirs)) {
+				if (forbiddenDirs.filter(fd => item.includes(fd)).length == 0) {
+					DIRS.add(item);
+				}
+			} else {
+				DIRS.add(item);
+			}
+		}
 	});
 }
 
